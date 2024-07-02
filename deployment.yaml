@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mydeployment
+  name: webdeploy
   labels:
-    name: mydeployment
+    name: webdeploy
 spec:
   replicas: 5
   selector:
     matchLabels:
-      server: nginx
+      server: web
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -17,11 +17,11 @@ spec:
   template:
     metadata:
       labels:
-        server: nginx
+        server: web
     spec:
       containers:
-      - name: nginxcontainer
-        image: nginx:latest
+      - name: webserver
+        image: httpd:2.4
         resources:
           limits:
             memory: "128Mi"

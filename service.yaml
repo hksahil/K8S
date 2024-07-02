@@ -1,0 +1,10 @@
+apiVersion: v1
+metadata:
+  name: websrc
+spec:
+  selector:
+    server: nginx
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 80

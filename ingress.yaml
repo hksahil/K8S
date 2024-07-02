@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingres
+  labels:
+    name: web-ingres
+spec:
+  rules:
+  - host: mysite.local
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: websrc
+            port:
+              number: 8080
